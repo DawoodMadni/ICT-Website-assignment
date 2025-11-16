@@ -1,0 +1,28 @@
+:root {
+    --p: #1e3a8a; /* for Primary */
+    --s: #3b82f6; /* for Secondary */
+    --a: #10b981; /* for Accent */
+    --t: #333; /* for Text */
+    --l: #f9fafb; /* for Light Background */
+    --w: #fff; /* setting White for future */
+    --font: 'Helvetica Neue', Arial, sans-serif;
+    --sp: 1rem;
+    --r: 0.5rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+}
+
+body {
+    font-family: var(--font); line-height: 1.6; color: var(--t);
+    background-color: var(--l);
+    display: grid; grid-template-rows: auto 1fr auto; min-height: 100vh;
+}
+a { text-decoration: none; color: var(--s); }
+a:hover, a:focus { color: var(--p); }
+
+.site-main { padding-top: 60px; }
+section { padding: 3rem var(--sp); max-width: 1200px; margin: 0 auto; }
+h1, h2, h3 { margin-bottom: var(--sp); color: var(--p); }
