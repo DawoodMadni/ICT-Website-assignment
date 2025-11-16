@@ -1,3 +1,4 @@
+/* --- 1. Variables & Reset --- */
 :root {
     --p: #1e3a8a; /* for Primary */
     --s: #3b82f6; /* for Secondary */
@@ -20,12 +21,14 @@ body {
     background-color: var(--l);
     display: grid; grid-template-rows: auto 1fr auto; min-height: 100vh;
 }
+
 a { text-decoration: none; color: var(--s); }
 a:hover, a:focus { color: var(--p); }
 
 .site-main { padding-top: 60px; }
 section { padding: 3rem var(--sp); max-width: 1200px; margin: 0 auto; }
 h1, h2, h3 { margin-bottom: var(--sp); color: var(--p); }
+
 /* ---  Header & Navbar --- */
 .site-header {
     background-color: var(--w); padding: var(--sp) 2rem; border-bottom: 1px solid #eee;
@@ -37,6 +40,7 @@ h1, h2, h3 { margin-bottom: var(--sp); color: var(--p); }
 .main-nav ul { list-style: none; display: flex; gap: 1.5rem; }
 .main-nav a { color: var(--t); font-weight: 500; padding: 0.5rem 0; transition: color 0.3s; }
 .main-nav a:hover, .main-nav a:focus { color: var(--s); outline-offset: 2px; }
+
 /* Mobile Toggle (Hidden by Default) */
 .nav-toggle-input, .nav-toggle-label { display: none; }
 
@@ -56,3 +60,134 @@ h1, h2, h3 { margin-bottom: var(--sp); color: var(--p); }
 .cta-button:hover, .cta-button:focus {
     background-color: #0d9471; transform: translateY(-2px); outline: none;
 }
+
+/* ---  Products ka Grid aur Interactivity  --- */
+.products-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+
+.product-card {
+    background-color: var(--w); border: 1px solid #ddd; border-radius: var(--r);
+    padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover, .product-card:focus {
+    transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    outline: none; border-color: var(--s);
+}
+
+.product-image {
+    background-color: var(--l); height: 150px; margin-bottom: var(--sp);
+    display: flex; align-items: center; justify-content: center; border-radius: var(--r);
+}
+
+.add-to-cart {
+    display: block; margin-top: var(--sp); padding: 0.5rem 1rem;
+    background-color: var(--s); color: var(--w); border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.add-to-cart:hover, .add-to-cart:focus { background-color: var(--p); }
+
+/* --- applying more Interactivity  --- */
+.accordion { max-width: 800px; margin: 0 auto; }
+.accordion-toggle { display: none; }
+
+.accordion-label {
+    display: block; background-color: var(--w); border: 1px solid #ddd;
+    padding: var(--sp) 1.5rem; margin-top: 1rem; cursor: pointer;
+    font-weight: bold; transition: background-color 0.3s; position: relative;
+    border-radius: var(--r);
+}
+
+.accordion-label:hover, .accordion-label:focus {
+    background-color: #f0f4ff; outline: none; box-shadow: 0 0 0 2px var(--s);
+}
+
+.accordion-label::after {
+    content: '+'; position: absolute; right: 1.5rem; font-size: 1.2rem; transition: transform 0.3s;
+}
+
+.accordion-content {
+    background-color: var(--w); padding: 0 1.5rem; max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    border: 1px solid #ddd; border-top: none;
+    border-radius: 0 0 var(--r) var(--r);
+}
+
+.accordion-toggle:checked + .accordion-label + .accordion-content {
+    max-height: 500px; padding: 1rem 1.5rem 1.5rem;
+}
+.accordion-toggle:checked + .accordion-label::after {
+    content: '−'; transform: rotate(180deg);
+}
+
+/* --- 6. Form Styling (Part B) --- */
+.contact-form {
+    display: flex; flex-direction: column; gap: var(--sp); max-width: 600px;
+    margin: 0 auto; padding: 2rem; background-color: var(--w);
+    border-radius: var(--r); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+
+input[type="text"], input[type="email"], textarea, select {
+    width: 100%; padding: 0.75rem; border: 1px solid #ccc;
+    border-radius: 4px; font-family: var(--font); transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--s); outline: 2px solid var(--s); outline-offset: 1px;
+}
+
+textarea { resize: vertical; }
+
+.submit-button {
+    background-color: var(--p); color: var(--w); padding: 0.85rem 1.5rem;
+    border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;
+    font-weight: bold; transition: background-color 0.3s;
+}
+.submit-button:hover, .submit-button:focus { background-color: var(--s); outline: 2px solid var(--p); outline-offset: 2px; }
+
+/* Custom Form Elements */
+.radio-group, .checkbox-group { border: 1px solid #eee; padding: var(--sp); border-radius: var(--r); }
+legend { font-weight: bold; padding: 0 0.5rem; color: var(--p); margin-bottom: 0.5rem; }
+
+.radio-option, .checkbox-option { display: flex; align-items: center; margin-top: 0.5rem; }
+
+/* Hide default inputs */
+.radio-option input[type="radio"], .checkbox-option input[type="checkbox"] {
+    opacity: 0; width: 0; height: 0; margin: 0;
+}
+
+.radio-option label, .checkbox-option label {
+    position: relative; padding-left: 2rem; cursor: pointer; user-select: none;
+    font-weight: normal; display: flex; align-items: center; margin-bottom: 0;
+}
+
+/* Custom Checkbox/Radio Styling */
+.radio-option label::before, .checkbox-option label::before {
+    content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+    width: 1.25rem; height: 1.25rem; border: 2px solid #aaa;
+    background-color: var(--w); transition: all 0.2s ease;
+}
+
+.checkbox-option label::before { border-radius: 4px; } /* Checkbox (Square) */
+.radio-option label::before { border-radius: 50%; } /* Radio (Circle) */
+
+/* Checked States */
+.checkbox-option input:checked + label::before { background-color: var(--a); border-color: var(--a); }
+.checkbox-option input:checked + label::after {
+    content: '✓'; position: absolute; left: 0.2rem; top: 50%;
+    transform: translateY(-50%); color: var(--w); font-size: 1rem; font-weight: bold;
+}
+
+.radio-option input:checked + label::after {
+    content: ''; position: absolute; left: 0.35rem; top: 50%;
+    transform: translateY(-50%); width: 0.5rem; height: 0.5rem;
+    background-color: var(--p); border-radius: 50%;
+}
+
+/* Accessibility Focus */
+.radio-option input:focus + label::before,
+.checkbox-option input:focus + label::before {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); outline: none;
+}
+
