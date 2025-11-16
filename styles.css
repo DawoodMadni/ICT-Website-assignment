@@ -26,3 +26,14 @@ a:hover, a:focus { color: var(--p); }
 .site-main { padding-top: 60px; }
 section { padding: 3rem var(--sp); max-width: 1200px; margin: 0 auto; }
 h1, h2, h3 { margin-bottom: var(--sp); color: var(--p); }
+/* ---  Header & Navbar --- */
+.site-header {
+    background-color: var(--w); padding: var(--sp) 2rem; border-bottom: 1px solid #eee;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; width: 100%; z-index: 1000;
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; color: var(--p); }
+.main-nav ul { list-style: none; display: flex; gap: 1.5rem; }
+.main-nav a { color: var(--t); font-weight: 500; padding: 0.5rem 0; transition: color 0.3s; }
+.main-nav a:hover, .main-nav a:focus { color: var(--s); outline-offset: 2px; }
